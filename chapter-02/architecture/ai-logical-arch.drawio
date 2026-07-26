@@ -1,0 +1,34 @@
+<mxfile host="65bd71144e">
+    <diagram id="SsDVVJ5bUQGVIyLxYJj2" name="Page-1">
+        <mxGraphModel dx="1206" dy="1157" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="Triggers" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=6;strokeColor=#0000FF;" vertex="1" parent="1">
+                    <mxGeometry x="110" y="80" width="400" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="Routing" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=6;strokeColor=#0000FF;" vertex="1" parent="1">
+                    <mxGeometry x="110" y="150" width="400" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="Context" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=6;strokeColor=#0000FF;" vertex="1" parent="1">
+                    <mxGeometry x="110" y="360" width="400" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="Models" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=6;strokeColor=#0000FF;" vertex="1" parent="1">
+                    <mxGeometry x="110" y="430" width="400" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="Actions" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=6;strokeColor=#0000FF;" vertex="1" parent="1">
+                    <mxGeometry x="110" y="290" width="400" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="Execution" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=6;strokeColor=#0000FF;" vertex="1" parent="1">
+                    <mxGeometry x="110" y="220" width="400" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="Observability" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=6;strokeColor=#0000FF;rotation=-90;" vertex="1" parent="1">
+                    <mxGeometry x="-130" y="260" width="400" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="Identity &amp;amp; Auth" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=6;strokeColor=#0000FF;rotation=-90;direction=west;" vertex="1" parent="1">
+                    <mxGeometry x="350" y="260" width="400" height="50" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
