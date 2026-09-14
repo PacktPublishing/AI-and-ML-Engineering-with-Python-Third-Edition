@@ -48,7 +48,7 @@ PREMIUM_MODEL_ID = os.environ.get(
 
 # How many times each prompt/model pair is invoked. Keep this small -- it only
 # needs to be enough to make the CloudWatch metrics clearly visible.
-CALLS_PER_PROMPT = 1#3
+CALLS_PER_PROMPT = 1  # 3
 
 # Cap response length so the whole demo costs very little.
 MAX_OUTPUT_TOKENS = 400

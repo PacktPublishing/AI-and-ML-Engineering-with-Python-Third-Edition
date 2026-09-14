@@ -2,7 +2,6 @@
 
 import json
 
-
 DATASET = {
     "Glasgow city API": json.dumps(
         {
@@ -144,7 +143,6 @@ DATASET = {
         },
         indent=2,
     ),
-
     "Physics paper search API": json.dumps(
         {
             "request": {
@@ -257,7 +255,6 @@ DATASET = {
         },
         indent=2,
     ),
-
     "HYROX event API": json.dumps(
         {
             "event": "HYROX Glasgow",
@@ -300,7 +297,6 @@ DATASET = {
         },
         indent=2,
     ),
-
     "AI platform logs": "\n".join(
         [
             (

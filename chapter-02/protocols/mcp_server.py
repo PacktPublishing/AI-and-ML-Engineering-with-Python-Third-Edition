@@ -4,7 +4,7 @@ mcp_server.py
 The same stubbed data lake tool, implemented against the low-level
 mcp.Server class rather than FastMCP.
 
-This is what FastMCP is abstracting. Compare with minimal_server.py
+This is what FastMCP is abstracting. Compare with fastmcp_server.py
 to see exactly what the framework buys you.
 
 Dependencies:
@@ -27,7 +27,7 @@ DATA_LAKE_STATUS_TOOL = types.Tool(
     description="Returns the current status of the enterprise data lake.",
     input_schema={
         "type": "object",
-        "properties": {},   # no arguments for this stub
+        "properties": {},  # no arguments for this stub
         "required": [],
     },
 )
@@ -39,12 +39,15 @@ DATA_LAKE_STATUS_TOOL = types.Tool(
 # Each handler maps to one JSON-RPC method in the MCP spec.
 # ---------------------------------------------------------------------------
 
+
 async def handle_list_tools(ctx, params) -> types.ListToolsResult:
     """Responds to tools/list — tells the client what tools exist."""
     return types.ListToolsResult(tools=[DATA_LAKE_STATUS_TOOL])
 
 
-async def handle_call_tool(ctx, params: types.CallToolRequestParams) -> types.CallToolResult:
+async def handle_call_tool(
+    ctx, params: types.CallToolRequestParams
+) -> types.CallToolResult:
     """Responds to tools/call — executes the named tool and returns a result."""
     if params.name != "get_data_lake_status":
         raise ValueError(f"Unknown tool: {params.name}")
@@ -62,6 +65,7 @@ async def handle_call_tool(ctx, params: types.CallToolRequestParams) -> types.Ca
 # FastMCP's @mcp.tool decorator does all of this registration implicitly.
 # Here it's explicit: create the server, attach handlers, run the transport.
 # ---------------------------------------------------------------------------
+
 
 async def main():
     app = Server(

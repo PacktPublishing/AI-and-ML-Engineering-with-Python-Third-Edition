@@ -9,3 +9,30 @@ dependencies = [
     "matplotlib>=3.10.9",
     "pandas>=2.3.3",
 ]
+
+[dependency-groups]
+dev = [
+    "pyright>=1.1.390",
+    "pytest>=8",
+    "ruff>=0.6",
+]
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+
+[tool.ruff.lint]
+# Pyflakes, pycodestyle, isort, pyupgrade, flake8-bugbear.
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.pyright]
+pythonVersion = "3.10"
+typeCheckingMode = "standard"
+venvPath = "."
+venv = ".venv"
+
+[tool.ruff.lint.per-file-ignores]
+# dataset.py is a corpus of sample documents. The long lines are prose held in
+# string literals; rewrapping them would make the sample data harder to read
+# without making the code any better.
+"dataset.py" = ["E501"]

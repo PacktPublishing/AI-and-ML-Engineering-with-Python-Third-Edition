@@ -13,7 +13,6 @@ Dependencies: uv pip install a2a-sdk httpx
 import asyncio
 
 import httpx
-
 from a2a.client import A2ACardResolver, ClientConfig, create_client
 from a2a.helpers import new_text_message
 from a2a.types import Role, SendMessageRequest
@@ -27,10 +26,14 @@ async def main():
         print(f"Discovered: {card.name}\n")
 
         # 2. Build client from the card
-        client = await create_client(agent=card, client_config=ClientConfig(streaming=False))
+        client = await create_client(
+            agent=card, client_config=ClientConfig(streaming=False)
+        )
 
         # 3. Send a message
-        request = SendMessageRequest(message=new_text_message("hi", role=Role.ROLE_USER))
+        request = SendMessageRequest(
+            message=new_text_message("hi", role=Role.ROLE_USER)
+        )
         async for chunk in client.send_message(request):
             print(chunk)
 

@@ -24,22 +24,35 @@ Even minimal, A2A needs three things MCP doesn't:
 Dependencies: uv pip install a2a-sdk uvicorn
 """
 
-import uvicorn
+import os
 
+import uvicorn
+from a2a.helpers import new_task_from_user_message, new_text_part
 from a2a.server.agent_execution import AgentExecutor, RequestContext
 from a2a.server.events import EventQueue
 from a2a.server.request_handlers import DefaultRequestHandler
 from a2a.server.routes import create_agent_card_routes, create_jsonrpc_routes
 from a2a.server.tasks import InMemoryTaskStore, TaskUpdater
-from a2a.helpers import new_task_from_user_message, new_text_part
-from a2a.types import AgentCapabilities, AgentCard, AgentInterface, AgentSkill, TaskState
+from a2a.types import (
+    AgentCapabilities,
+    AgentCard,
+    AgentInterface,
+    AgentSkill,
+    TaskState,
+)
 from starlette.applications import Starlette
 
 
 class EchoExecutor(AgentExecutor):
     async def execute(self, context: RequestContext, event_queue: EventQueue) -> None:
-        task = context.current_task or new_task_from_user_message(context.message)
-        if not context.current_task:
+        # A request either continues an existing task or starts a new one from
+        # the incoming message. A new task has to be published to the event
+        # queue before anything is added to it, so the client can follow along.
+        task = context.current_task
+        if task is None:
+            if context.message is None:
+                raise ValueError("Request contained neither a task nor a message.")
+            task = new_task_from_user_message(context.message)
             await event_queue.enqueue_event(task)
 
         updater = TaskUpdater(event_queue, task_id=task.id, context_id=task.context_id)
@@ -51,6 +64,14 @@ class EchoExecutor(AgentExecutor):
 
 
 if __name__ == "__main__":
+    # Bind address and advertised URL are read from the environment so that the
+    # same file runs unchanged locally (loopback) and in a container, where the
+    # server has to listen on every interface. The Agent Card has to advertise a
+    # URL the *client* can reach, which is not always the one we bind to.
+    HOST = os.getenv("A2A_HOST", "127.0.0.1")
+    PORT = int(os.getenv("A2A_PORT", "9999"))
+    PUBLIC_URL = os.getenv("A2A_PUBLIC_URL", f"http://{HOST}:{PORT}")
+
     card = AgentCard(
         name="Echo Agent",
         description="A stub agent that always says hello.",
@@ -61,7 +82,7 @@ if __name__ == "__main__":
         supported_interfaces=[
             AgentInterface(
                 protocol_binding="JSONRPC",
-                url="http://127.0.0.1:9999",
+                url=PUBLIC_URL,
                 protocol_version="1.0",
             )
         ],
@@ -82,4 +103,4 @@ if __name__ == "__main__":
     )
 
     routes = create_agent_card_routes(card) + create_jsonrpc_routes(handler, "/")
-    uvicorn.run(Starlette(routes=routes), host="127.0.0.1", port=9999)
+    uvicorn.run(Starlette(routes=routes), host=HOST, port=PORT)
