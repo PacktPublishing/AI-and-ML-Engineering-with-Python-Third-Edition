@@ -1,0 +1,159 @@
+<mxfile host="65bd71144e">
+    <diagram name="Fig 2.2 - ML Pipeline (logical)" id="ml-pipeline-fig22">
+        <mxGraphModel dx="1466" dy="574" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1250" pageHeight="560" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="title" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=15;fontStyle=1;fontColor=#333333;" value="ML build, deploy, serve (logical)" vertex="1">
+                    <mxGeometry height="26" width="640" x="40" y="10" as="geometry"/>
+                </mxCell>
+                <mxCell id="src" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#5B7C99;strokeColor=#3C5469;fontColor=#ffffff;fontSize=11;" value="Source Control&#xa;[code + pipeline definitions]" vertex="1">
+                    <mxGeometry height="64" width="100" x="40" y="94" as="geometry"/>
+                </mxCell>
+                <mxCell id="data" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#5B7C99;strokeColor=#3C5469;fontColor=#ffffff;fontSize=11;" value="Data Source&#xa;[lake / warehouse]" vertex="1">
+                    <mxGeometry height="64" width="100" x="40" y="210" as="geometry"/>
+                </mxCell>
+                <mxCell id="secrets" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#8C8C8C;strokeColor=#5F5F5F;fontColor=#ffffff;fontSize=11;" value="Secrets / Config Store" vertex="1">
+                    <mxGeometry height="56" width="120" x="140" y="389" as="geometry"/>
+                </mxCell>
+                <mxCell id="buildlane" parent="1" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fillColor=none;strokeColor=#4C9A52;fontColor=#2E7D32;verticalAlign=top;fontSize=12;fontStyle=1;spacingTop=6;" value="Model Build Workflow (CI)" vertex="1">
+                    <mxGeometry height="120" width="540" x="230" y="56" as="geometry"/>
+                </mxCell>
+                <mxCell id="pre" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4C9A52;strokeColor=#2E7D32;fontColor=#ffffff;fontSize=11;" value="Preprocess&#xa;/ feature eng." vertex="1">
+                    <mxGeometry height="56" width="110" x="250" y="98" as="geometry"/>
+                </mxCell>
+                <mxCell id="train" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4C9A52;strokeColor=#2E7D32;fontColor=#ffffff;fontSize=11;" value="Train" vertex="1">
+                    <mxGeometry height="56" width="110" x="380" y="98" as="geometry"/>
+                </mxCell>
+                <mxCell id="eval" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4C9A52;strokeColor=#2E7D32;fontColor=#ffffff;fontSize=11;" value="Evaluate" vertex="1">
+                    <mxGeometry height="56" width="110" x="510" y="98" as="geometry"/>
+                </mxCell>
+                <mxCell id="register" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4C9A52;strokeColor=#2E7D32;fontColor=#ffffff;fontSize=11;" value="Register" vertex="1">
+                    <mxGeometry height="56" width="110" x="640" y="98" as="geometry"/>
+                </mxCell>
+                <mxCell id="registry" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C77F0A;strokeColor=#8A5806;fontColor=#ffffff;fontSize=11;" value="Model Registry&#xa;(+ approval gate)" vertex="1">
+                    <mxGeometry height="80" width="160" x="810" y="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="deploylane" parent="1" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fillColor=none;strokeColor=#1168BD;fontColor=#0B4884;verticalAlign=top;fontSize=12;fontStyle=1;spacingTop=6;" value="Model Deploy Workflow (CD)" vertex="1">
+                    <mxGeometry height="120" width="540" x="230" y="216" as="geometry"/>
+                </mxCell>
+                <mxCell id="stgdeploy" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1168BD;strokeColor=#0B4884;fontColor=#ffffff;fontSize=11;" value="Staging Deploy" vertex="1">
+                    <mxGeometry height="56" width="110" x="250" y="258" as="geometry"/>
+                </mxCell>
+                <mxCell id="mOM2HNuENACD-64mIGMy-7" edge="1" parent="1" source="servelane" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="mon">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="mOM2HNuENACD-64mIGMy-8" connectable="0" parent="mOM2HNuENACD-64mIGMy-7" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Telemetry" vertex="1">
+                    <mxGeometry relative="1" x="-0.4288" y="-2" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="servelane" parent="1" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fillColor=none;strokeColor=#00838F;fontColor=#00616B;verticalAlign=top;fontSize=12;fontStyle=1;spacingTop=6;" value="Serving" vertex="1">
+                    <mxGeometry height="105" width="279" x="490" y="355" as="geometry"/>
+                </mxCell>
+                <mxCell id="prodep" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#00838F;strokeColor=#00616B;fontColor=#ffffff;fontSize=11;" value="Prod Endpoint/Pipeline" vertex="1">
+                    <mxGeometry height="56" width="110" x="640" y="389" as="geometry"/>
+                </mxCell>
+                <mxCell id="mOM2HNuENACD-64mIGMy-13" edge="1" parent="1" source="mon" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="src">
+                    <mxGeometry relative="1" x="-0.0228" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="20" y="514"/>
+                            <mxPoint x="20" y="126"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="mOM2HNuENACD-64mIGMy-14" connectable="0" parent="mOM2HNuENACD-64mIGMy-13" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Feedback &amp;amp; retraining data" vertex="1">
+                    <mxGeometry relative="1" x="-0.0801" y="2" as="geometry">
+                        <mxPoint x="34" y="-2" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="mon" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#6A4C93;strokeColor=#4A356B;fontColor=#ffffff;fontSize=11;" value="Monitoring &amp; Observability" vertex="1">
+                    <mxGeometry height="50" width="279" x="490" y="489" as="geometry"/>
+                </mxCell>
+                <mxCell id="b1" edge="1" parent="1" source="src" style="endArrow=block;html=1;fontSize=10;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="pre" value="Push, trigger CI">
+                    <mxGeometry relative="1" x="-0.0909" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="b2" edge="1" parent="1" source="data" style="endArrow=block;html=1;fontSize=10;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;" target="pre" value="Training data">
+                    <mxGeometry relative="1" x="0.0049" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="115" y="190"/>
+                            <mxPoint x="170" y="190"/>
+                            <mxPoint x="170" y="140"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="b3" edge="1" parent="1" source="pre" style="endArrow=block;html=1;fontSize=10;" target="train">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="b4" edge="1" parent="1" source="train" style="endArrow=block;html=1;fontSize=10;" target="eval">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="b5" edge="1" parent="1" source="eval" style="endArrow=block;html=1;fontSize=10;" target="register">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="b6" edge="1" parent="1" source="register" style="endArrow=block;html=1;fontSize=10;edgeStyle=orthogonalEdgeStyle;" target="registry" value="Register model&amp;nbsp;&lt;div&gt;+ metrics&lt;/div&gt;">
+                    <mxGeometry relative="1" x="0.0345" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="b7" edge="1" parent="1" source="registry" style="endArrow=block;html=1;fontSize=10;exitX=0;exitY=0.5;exitDx=0;exitDy=0;edgeStyle=orthogonalEdgeStyle;" target="stgdeploy" value="Get approved model">
+                    <mxGeometry relative="1" x="-0.4886" as="geometry"/>
+                </mxCell>
+                <mxCell id="d1" edge="1" parent="1" source="stgdeploy" style="endArrow=block;html=1;fontSize=10;" target="tests">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="d2" edge="1" parent="1" source="tests" style="endArrow=block;html=1;fontSize=10;" target="approval">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="d3" edge="1" parent="1" source="approval" style="endArrow=block;html=1;fontSize=10;" target="proddeploy">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="s1" edge="1" parent="1" source="stgdeploy" style="endArrow=block;html=1;fontSize=10;edgeStyle=orthogonalEdgeStyle;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="mOM2HNuENACD-64mIGMy-3" value="Deploy to staging">
+                    <mxGeometry relative="1" x="0.0214" as="geometry">
+                        <mxPoint as="offset"/>
+                        <mxPoint x="449" y="436" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="sec1" edge="1" parent="1" source="secrets" style="endArrow=open;html=1;fontSize=9;dashed=1;strokeColor=#8C8C8C;fontColor=#8C8C8C;entryX=0.25;entryY=1;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;" target="pre" value="credentials">
+                    <mxGeometry relative="1" x="-0.2132" as="geometry">
+                        <mxPoint as="offset"/>
+                        <Array as="points">
+                            <mxPoint x="210" y="200"/>
+                            <mxPoint x="277.5" y="200"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="sec2" edge="1" parent="1" source="secrets" style="endArrow=open;html=1;fontSize=9;dashed=1;strokeColor=#8C8C8C;edgeStyle=orthogonalEdgeStyle;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" target="stgdeploy">
+                    <mxGeometry relative="1" x="-0.0204" as="geometry"/>
+                </mxCell>
+                <mxCell id="mOM2HNuENACD-64mIGMy-11" connectable="0" parent="sec2" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="&lt;span style=&quot;color: rgb(140, 140, 140); font-size: 9px;&quot;&gt;credentials&lt;/span&gt;" vertex="1">
+                    <mxGeometry relative="1" x="-0.0041" y="-2" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="tests" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1168BD;strokeColor=#0B4884;fontColor=#ffffff;fontSize=11;" value="Automated&#xa;Tests" vertex="1">
+                    <mxGeometry height="56" width="110" x="380" y="258" as="geometry"/>
+                </mxCell>
+                <mxCell id="approval" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1168BD;strokeColor=#0B4884;fontColor=#ffffff;fontSize=11;" value="Manual&#xa;Approval" vertex="1">
+                    <mxGeometry height="56" width="110" x="510" y="258" as="geometry"/>
+                </mxCell>
+                <mxCell id="mOM2HNuENACD-64mIGMy-1" edge="1" parent="1" source="proddeploy" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="prodep">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="mOM2HNuENACD-64mIGMy-4" connectable="0" parent="mOM2HNuENACD-64mIGMy-1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Deploy to prod" vertex="1">
+                    <mxGeometry relative="1" x="-0.2429" y="-1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="proddeploy" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1168BD;strokeColor=#0B4884;fontColor=#ffffff;fontSize=11;" value="Prod Deploy" vertex="1">
+                    <mxGeometry height="56" width="110" x="640" y="258" as="geometry"/>
+                </mxCell>
+                <mxCell id="mOM2HNuENACD-64mIGMy-3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#00838F;strokeColor=#00616B;fontColor=#ffffff;fontSize=11;" value="Staging Endpoint/Pipeline" vertex="1">
+                    <mxGeometry height="56" width="110" x="510" y="389" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
